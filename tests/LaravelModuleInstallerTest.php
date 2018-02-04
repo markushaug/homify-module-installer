@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 use Composer\Composer;
 use Composer\IO\IOInterface;
 use Composer\Package\PackageInterface;
-use Joshbrw\LaravelModuleInstaller\LaravelModuleInstaller;
+use markushaug\LaravelModuleInstaller\LaravelModuleInstaller;
 
 class LaravelModuleInstallerTest extends TestCase
 {
