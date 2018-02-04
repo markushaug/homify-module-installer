@@ -49,19 +49,22 @@ class LaravelModuleInstaller extends LibraryInstaller
     protected function getModuleName(PackageInterface $package)
     {
         $name = $package->getPrettyName();
-        $split = explode("/", $name);
+        if (preg_match('/\bhomify-\b/',$name)){
 
-        if (count($split) !== 2) {
-            throw new \Exception($this->usage());
+            $split = explode("/", $name);
+
+            if (count($split) !== 2) {
+                throw new \Exception($this->usage());
+            }
+
+            $splitNameToUse = explode("-", $split[1]);
+
+            if (count($splitNameToUse) < 2) {
+                throw new \Exception($this->usage());
+            }
+            $splitNameToUse = $splitNameToUse[1];
+            return $splitNameToUse;
         }
-
-        $splitNameToUse = explode("-", $split[1]);
-
-        if (count($splitNameToUse) < 2) {
-            throw new \Exception($this->usage());
-        }
-        $splitNameToUse = $splitNameToUse[1];
-        return ' '.$splitNameToUse;
     }
 
     /**
