@@ -41,7 +41,7 @@ class LaravelModuleInstaller extends LibraryInstaller
     }
 
     /**
-     * Get the module name, i.e. "joshbrw/something-module" will be transformed into "Something"
+     * Get the module name, i.e. "markushaug/homify-<module>" will be transformed into "Something"
      * @param PackageInterface $package
      * @return string
      * @throws \Exception
@@ -60,12 +60,8 @@ class LaravelModuleInstaller extends LibraryInstaller
         if (count($splitNameToUse) < 2) {
             throw new \Exception($this->usage());
         }
-
-        if (array_pop($splitNameToUse) !== 'module') {
-            throw new \Exception($this->usage());
-        }
-
-        return implode('',array_map('ucfirst', $splitNameToUse));
+        $splitNameToUse = $splitNameToUse[1];
+        return ' '.$splitNameToUse;
     }
 
     /**
@@ -74,7 +70,7 @@ class LaravelModuleInstaller extends LibraryInstaller
      */
     protected function usage()
     {
-        return "Ensure your package's name is in the format <vendor>/<name>-<module>";
+        return "Ensure your package's name is in the format <vendor>/homify-<module>";
     }
 
     /**
