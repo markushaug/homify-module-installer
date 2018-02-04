@@ -1,6 +1,6 @@
 <?php
 
-namespace Joshbrw\LaravelModuleInstaller;
+namespace markushaug\LaravelModuleInstaller;
 
 use Composer\Composer;
 use Composer\IO\IOInterface;
